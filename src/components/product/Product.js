@@ -4,9 +4,10 @@ const Product = (props) => {
 
   return (
     <div className='product'>
-      <input type="text" onChange={props.change} />
+   <input type="text" onChange={props.change} value={props.title}/>
    <p>product.title:{props.title}</p>
-   <p onClick={props.click} >product.price:{props.price}</p>
+   <p>product.price:{props.price}</p>
+   <button onClick={props.click}> remove</button>
    <p>{props.children}</p>
 
     </div>
