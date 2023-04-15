@@ -1,3 +1,11 @@
 .center{
   text-align: center;
 }
+.redBtn{
+ background: red;
+ color: white;
+}
+.bluBtn{
+ background-color: blue;
+ color: white;
+}
