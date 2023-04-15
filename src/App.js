@@ -1,6 +1,8 @@
 import './App.css'; 
 import Product from './components/product/Product'
 import { useState } from 'react';
+import Main from './components/Main/Main';
+import ProductList from './components/ProductList/ProductList';
 function App() {
   const [productsState,setProductState]=useState({
     product:[
@@ -59,19 +61,18 @@ setProductState({
 }
 console.log(productsState.product);
   
- const mapProduct = productsState.product.map((item,index)=>{ return <Product   change={(event)=>changeTitleHandler(event,item.id)}
-                                                                                title={item.title}
-                                                                                price={item.price}
-                                                                                key={item.id}
-                                                                                click={()=>removeProductHandler(index)}
-                                                                                                                                    />})
+//  const mapProduct = productsState.product.map((item,index)=>{ return <Product   change={(event)=>changeTitleHandler(event,item.id)}
+//                                                                                 title={item.title}
+//                                                                                 price={item.price}
+//                                                                                 key={item.id}
+//                                                                                 click={()=>removeProductHandler(index)}
+//                                                                                                                                     />})
   return (
     <div className='center'>
-      <h1>bookShop</h1>
-      <button className='redBtn' onClick={showProductHandler}>show/hide</button>
+   <Main show={showProductHandler}/>
      {productsState.showProduct?  
       <div> 
-        {mapProduct}
+       <ProductList product={productsState.product} click={removeProductHandler} change={changeTitleHandler}/>
       </div>: null}
       <button className='bluBtn' onClick={()=>changePriceHandler("changed")}>change price</button>
     </div>
