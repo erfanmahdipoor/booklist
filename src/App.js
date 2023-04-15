@@ -43,16 +43,21 @@ function App() {
  })
   }
   
+ const mapProduct = productsState.product.map((item)=>{ return <Product  change={changeTitleHandler}
+                                                                 title={item.title}
+                                                                 price={item.price}
+                                                                 click={changePriceHandler}
+                                                                               />})
+  // console.log(productsState.product);
   return (
     <div className='center'>
       <h1>bookShop</h1>
       <button className='redBtn' onClick={showProductHandler}>show/hide</button>
-     {productsState.showProduct?  <div>
-    <Product change={changeTitleHandler}  title={productsState.product[0].title} price={productsState.product[0].price}/>
-    <Product  title={productsState.product[1].title} price={productsState.product[1].price}/>
-    <Product click={changePriceHandler} title={productsState.product[2].title} price={productsState.product[2].price}/>
-    <button className='bluBtn' onClick={()=>changePriceHandler("newTitle")} >change price</button>
+     {productsState.showProduct? 
+      <div> 
+        {mapProduct}
       </div>: null}
+      <button className='bluBtn' onClick={()=>changePriceHandler("changed")}>change price</button>
     </div>
   );
 }
