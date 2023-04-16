@@ -71,7 +71,7 @@ console.log(productsState.product);
       {title:"book2", price:40, id:2},
       {title:"book3", price:50, id:3}
     ],
-    showProduct:false,
+    showProduct:true,
     removeMain:true,
     auth:true
   })
