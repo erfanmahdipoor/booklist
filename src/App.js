@@ -10,7 +10,8 @@ function App() {
       {title:"book2", price:40, id:2},
       {title:"book3", price:50, id:3}
     ],
-    showProduct:false
+    showProduct:false,
+    removeMain:true
   })
   const changePriceHandler=(title)=>{
     setProductState({
@@ -69,7 +70,8 @@ console.log(productsState.product);
 //                                                                                                                                     />})
   return (
     <div className='center'>
-   <Main show={showProductHandler}/>
+      <button onClick={()=>{setProductState({removeMain:false})}}>remove main</button>
+  {productsState.removeMain? <Main show={showProductHandler} product={productsState.showProduct}/>:null}
      {productsState.showProduct?  
       <div> 
        <ProductList product={productsState.product} click={removeProductHandler} change={changeTitleHandler}/>
