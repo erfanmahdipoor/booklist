@@ -11,8 +11,10 @@ function App() {
       {title:"book3", price:50, id:3}
     ],
     showProduct:false,
-    removeMain:true
+    removeMain:true,
+    auth:false
   })
+ 
   const changePriceHandler=(title)=>{
     setProductState({
       product:[
@@ -49,7 +51,9 @@ function App() {
     {title:"book2", price:40 },
     {title:"book3", price:50 }
   ],
-  showProduct:!shProduct
+  showProduct:!shProduct,
+  removeMain:true
+
  })
   }
 const removeProductHandler=(productIndex)=>{
@@ -61,20 +65,31 @@ setProductState({
 })
 }
 console.log(productsState.product);
-  
+   const loginHandler=()=>{
+    setProductState({product:[
+      {title:"book1", price:30, id:1},
+      {title:"book2", price:40, id:2},
+      {title:"book3", price:50, id:3}
+    ],
+    showProduct:false,
+    removeMain:true,
+    auth:true
+  })
+   }
 //  const mapProduct = productsState.product.map((item,index)=>{ return <Product   change={(event)=>changeTitleHandler(event,item.id)}
 //                                                                                 title={item.title}
 //                                                                                 price={item.price}
 //                                                                                 key={item.id}
 //                                                                                 click={()=>removeProductHandler(index)}
 //                                                                                                                                     />})
+
   return (
     <div className='center'>
       <button onClick={()=>{setProductState({removeMain:false})}}>remove main</button>
-  {productsState.removeMain? <Main show={showProductHandler} product={productsState.showProduct}/>:null}
+  {productsState.removeMain? <Main login={loginHandler} show={showProductHandler} product={productsState.showProduct}/>:null}
      {productsState.showProduct?  
       <div> 
-       <ProductList product={productsState.product} click={removeProductHandler} change={changeTitleHandler}/>
+       <ProductList isAuth={productsState.auth} product={productsState.product} click={removeProductHandler} change={changeTitleHandler}/>
       </div>: null}
       <button className='bluBtn' onClick={()=>changePriceHandler("changed")}>change price</button>
     </div>

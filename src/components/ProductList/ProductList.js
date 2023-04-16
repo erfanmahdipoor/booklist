@@ -7,6 +7,8 @@ const ProductList = props => {
                                                                                 price={item.price}
                                                                                 key={item.id}
                                                                                 click={()=>props.click(index)}
+                                                                                isAuth={props.isAuth}
+
                                                                                                                                     />})
   )
 }
